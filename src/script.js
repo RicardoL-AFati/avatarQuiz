@@ -41,11 +41,13 @@ const addEventListeners = () => {
   quizBtn.addEventListener('click', initializeQuiz);
   domAnswers.forEach((answer) => answer.addEventListener('click', onAnswerClick));
 };
+
 // Run when game is over
 const removeEventListeners = () => {
   quizBtn.removeEventListener('click', initializeQuiz);
   domAnswers.forEach((answer) => answer.removeEventListener('click', onAnswerClick));
 };
+
 // Starts Game
 const initializeQuiz = () => {
   addEventListeners();
@@ -58,6 +60,7 @@ const initializeQuiz = () => {
   bio.style.display = 'inline';
   renderQuiz();
 };
+
 // Renders Grid Content
 const renderQuiz = () => {
   /* removing restart class (if present) from question div,
@@ -69,6 +72,7 @@ const renderQuiz = () => {
     domAnswers[index].innerHTML = answer;
   });
 };
+
 // Render Grid Content - for Game over
 const renderGameOver = () => {
   /* Removing click events,
@@ -81,6 +85,7 @@ const renderGameOver = () => {
   question.innerHTML = 'Play Again?';
   scoreDisplay.innerHTML = `Final Score: ${score}`;
 };
+
 // Renders Grid Content - for continuing game
 const continueQuiz = () => {
   // Removes any previous wrong answer styling
@@ -98,7 +103,7 @@ const continueQuiz = () => {
     renderQuiz();
   }
 };
-// When answer div is clicked
+
 function onAnswerClick() {
   // First index of [answers] is the correct answer index
   const correctIndex = answers[count][0];
@@ -118,10 +123,11 @@ function onAnswerClick() {
     // show message and change clicked div's styling
     message.innerHTML = 'Not correct, try again!';
     this.classList.add('wrong');
-    // decrement score by 5 unless there has been two failed attempts
+    // decrement score by 5 if attempts < two
     score = tries > 1 ? score : score - 5;
     // increment failed attempts var
     tries++;
+    renderQuiz();
   }
 }
 
