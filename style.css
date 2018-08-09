@@ -1,0 +1,102 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  background-color: #78ded6;
+}
+
+/* =================== Header =================== */
+h1 {
+  margin-top: 3rem;
+  padding: .5rem;
+  border-bottom: 1px solid black;
+}
+
+button {
+  border: 1px solid #3a3b3d;
+  padding: .5rem;
+  background: transparent;
+}
+
+
+/* =================== Main =================== */
+
+.container {
+  margin: 5rem auto;
+  max-width: 60vw;
+  display: none;
+  color: #fff;
+  transition: all 0.5s ease-in-out;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  grid-template-areas:
+  'Q Q'
+  'score score'
+  'ans0 ans1'
+  'ans2 ans3'
+  'msg msg';
+}
+.score { grid-area: score; }
+.ans0 { grid-area: ans0; }
+.ans1 { grid-area: ans1; }
+.ans2 { grid-area: ans2; }
+.ans3 { grid-area: ans3; }
+.message { grid-area: msg; }
+/* Shows stacked on tablet size and smaller */
+@media (max-width: 780px) {
+  .container {
+    min-width: 100vw;
+    margin: 0;
+    grid-template-rows: repeat(7, 1fr);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    'Q'
+    'score'
+    'ans0'
+    'ans1'
+    'ans2'
+    'ans3'
+    'msg';
+  }
+}
+.container > div {
+    padding: 2rem;
+    width: 100%;
+    background-color: #cb5920;
+    border: 1px solid black;
+}
+
+.question { 
+    grid-area: Q;
+    font-size: 1.3rem; 
+}
+.question.clickMe {
+    background-color: #fff;
+    color: #acc02a;
+}
+
+.answers:hover {
+  background-color: #fff;
+  color: #3a3b3d;
+}
+
+.wrong {
+    background-color: #793513 !important;
+    border: 3px solid #acc02a !important;
+}
+
+/* =================== Footer =================== */
+
+.bio {
+  display: none;
+}
+
+.bio:hover {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #3a3b3d;
+}
